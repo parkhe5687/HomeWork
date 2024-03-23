@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" href="style.css">
+    <title>Homework</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="d_Top">
+            <div id="d_student_info">
+                <span id="d_student_id">202034012</span>
+                <span id="d_student_name">유수현</span>
+            </div>
+        </div>
+        <div id="content">
+            <div id="d_Left">
+                <div class="Lbutton_box">
+                    <button class="Lbutton" onclick="drawCircle()">버튼1</button>
+                    <button class="Lbutton" onclick="displayGameInfo()">버튼2</button>
+                </div>
+            </div>
+            <div id="d_Right">빈화면</div>
+        </div>
+    </div>
+
+    <script>
+        
+        function drawCircle() {
+            var canvas = document.createElement('canvas');
+            canvas.width = 400;
+            canvas.height = 400;
+            var context = canvas.getContext('2d');
+            context.beginPath();
+            context.arc(200, 200, 150, 0, 2 * Math.PI);
+            context.fillStyle = 'blue';
+            context.fill();
+            document.getElementById('d_Right').innerHTML = '';
+            document.getElementById('d_Right').appendChild(canvas);
+        }
+
+        
+        function displayGameInfo() {
+            var gameName = '로스트아크';
+            var releaseYear = '출시 년도: 2018';
+            var genre = '장르: MMORPG'; 
+            var reason = '좋아하는 이유: 레이드의 난이도가 약간 높으면서 보는 즐거움이 있는 게임이기 때문입니다';
+
+            var gameInfo = document.createElement('div');
+
+            var screenshot = document.createElement('img');
+            screenshot.src = 'image.png'; 
+            screenshot.className = 'image';
+
+            var nameElement = document.createElement('p');
+            nameElement.textContent = gameName;
+
+            var releaseYearElement = document.createElement('p');
+            releaseYearElement.textContent = releaseYear;
+
+            var genreElement = document.createElement('p');
+            genreElement.textContent = genre;
+
+            var reasonElement = document.createElement('p');
+            reasonElement.textContent = reason;
+
+            gameInfo.appendChild(screenshot);
+            gameInfo.appendChild(nameElement);
+            gameInfo.appendChild(releaseYearElement);
+            gameInfo.appendChild(genreElement);
+            gameInfo.appendChild(reasonElement);
+
+            document.getElementById('d_Right').innerHTML = '';
+            document.getElementById('d_Right').appendChild(gameInfo); 
+        }
+    </script>
+</body>
+</html>
